@@ -5,26 +5,31 @@ import matplotlib.colors as colors # Needed for the discrete colorbars
 from mpl_toolkits.axes_grid1 import make_axes_locatable # For the horizontal colourbar
 from pylab import * # we need this for the cm.get_cmap() to work
 
+###############################################################################################
+# mkfig functions: functions that create a figure and one or multiple axis objects, preformated.
+###############################################################################################
+
 
 def mkfig_simple_bold(fontsize_major = 12, fontsize_minor = 10, family = "arial" , **kwargs):
 
   mpl.rcParams["font.weight"] = "bold"
-  mpl.rcParams["font.size"] = fontsize_major
+  mpl.rcParams["font.size"] = fontsize_minor
   mpl.rcParams["font.family"] = family
   mpl.rcParams["axes.labelweight"] = "bold"
-  mpl.rcParams["axes.labelsize"] = fontsize_minor
+  mpl.rcParams["axes.labelsize"] = fontsize_major
 
   fig,ax = plt.subplots(**kwargs)
 
   return fig,ax
 
+
 def mkfig_grey_bold(fontsize_major = 12, fontsize_minor = 10, family = "arial" , **kwargs):
 
   mpl.rcParams["font.weight"] = "bold"
-  mpl.rcParams["font.size"] = fontsize_major
+  mpl.rcParams["font.size"] = fontsize_minor
   mpl.rcParams["font.family"] = family
   mpl.rcParams["axes.labelweight"] = "bold"
-  mpl.rcParams["axes.labelsize"] = fontsize_minor
+  mpl.rcParams["axes.labelsize"] = fontsize_major
 
   fig,ax = plt.subplots(**kwargs)
   ax.set_facecolor('#cccccc')
@@ -33,7 +38,12 @@ def mkfig_grey_bold(fontsize_major = 12, fontsize_minor = 10, family = "arial" ,
   return fig,ax
 
 
-def make_axis_log(fig, ax, x=True, y=True):
+###############################################################################################
+# mod functions: modify an existing axis/figure/text/... object to achieve a new thing
+###############################################################################################
+
+
+def mod_axis_log(fig, ax, x=True, y=True):
   """
     sdfsdfsdfa
   """
@@ -41,6 +51,12 @@ def make_axis_log(fig, ax, x=True, y=True):
     ax.set_xscale('log')
   if(y):
     ax.set_yscale('log')
+
+
+
+###############################################################################################
+# make functions: functions that create and return something to use in matplotlib (e.g. colorbar, polygon,...)
+###############################################################################################
 
 def make_discrete_colormap(use_existing_cmap = True, colormap = "RdBu", n_colors = 4, color_array = None, boundary_array = None):
 
@@ -59,6 +75,10 @@ def make_discrete_colormap(use_existing_cmap = True, colormap = "RdBu", n_colors
     norm = colors.BoundaryNorm(boundaries, cmap.N, clip=True)
 
   return cmap, norm
+
+###############################################################################################
+# add functions: functions that add some feature to an existing ax/fig
+###############################################################################################
 
 
 def add_horizontal_colorbar(fig, ax, cb, tick_position = None, tick_labels = None, cbar_label = "I am a label"):
