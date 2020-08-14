@@ -2,7 +2,7 @@
 from matplotlib import pyplot as plt
 import matplotlib as mpl
 import matplotlib.colors as colors # Needed for the discrete colorbars
-from mpl_toolkits.axes_grid1 import make_axes_locatable # For the horizontal colourbar
+from mpl_toolkits.axes_grid1 import make_axes_locatable # Help with sizing and locate the colorbars
 from pylab import * # we need this for the cm.get_cmap() to work
 
 ###############################################################################################
